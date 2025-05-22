@@ -1,2 +1,6 @@
 ode_inverse_output_lstm2/best_model.pth filter=lfs diff=lfs merge=lfs -text
 ode_inverse_output_lstm2/last_model.pth filter=lfs diff=lfs merge=lfs -text
+Weights/lstm_best_model.pth filter=lfs diff=lfs merge=lfs -text
+Weights/lstm_last_model.pth filter=lfs diff=lfs merge=lfs -text
+Weights/cnn_best_model.pth filter=lfs diff=lfs merge=lfs -text
+Weights/cnn_last_model.pth filter=lfs diff=lfs merge=lfs -text
