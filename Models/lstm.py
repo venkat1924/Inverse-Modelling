@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Inverse ODE Parameter Recovery using a Neural Network (Version 3.1 - Verified)
+Inverse ODE Parameter Recovery using a Neural Network
 
 This script trains a model (CNN or LSTM) to predict the 13 parameters
 of a prey-predator ODE system given a time series trajectory.
