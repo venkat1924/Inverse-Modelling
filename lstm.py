@@ -417,7 +417,7 @@ def load_checkpoint(filepath: str, model: nn.Module, optimizer: Optional[optim.O
     if not os.path.exists(filepath): raise FileNotFoundError(f"Checkpoint not found: {filepath}")
     effective_device = device or torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Loading checkpoint from {filepath} to {effective_device}...")
-    checkpoint = torch.load(filepath, map_location=effective_device)
+    checkpoint = torch.load(filepath, map_location=effective_device, weights_only=False)
     model.load_state_dict(checkpoint['model_state_dict'])
     model.to(effective_device) # Ensure model is on the correct device
     if optimizer and 'optimizer_state_dict' in checkpoint:
@@ -717,7 +717,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train inverse model for ODE parameter recovery lstm.")
     # Data & Output Arguments
     parser.add_argument('--data_path', type=str, default='simulation_results.csv', help="Path to the simulation results CSV file.")
-    parser.add_argument('--output_dir', type=str, default="ode_inverse_output_lstm", help="Directory to save checkpoints, plots, and results.")
+    parser.add_argument('--output_dir', type=str, default="ode_inverse_output_lstm2", help="Directory to save checkpoints, plots, and results.")
     parser.add_argument('--use_clean_data', action='store_true', help="Use 'X','Y','Z' columns instead of 'X_noisy','Y_noisy','Z_noisy'.")
 
     # Model Choice Arguments
@@ -730,7 +730,7 @@ if __name__ == "__main__":
     parser.add_argument('--lstm_bidirectional', default=True, help="Use a bidirectional LSTM.")
 
     # Training Hyperparameters
-    parser.add_argument('--epochs', type=int, default=150, help="Maximum number of training epochs.")
+    parser.add_argument('--epochs', type=int, default=5000, help="Maximum number of training epochs.")
     parser.add_argument('--batch_size', type=int, default=64, help="Batch size for training and validation.")
     parser.add_argument('--learning_rate', type=float, default=5e-5, help="Optimizer learning rate (AdamW).") # Adjusted default
     parser.add_argument('--weight_decay', type=float, default=1e-4, help="Weight decay (L2 penalty) for AdamW optimizer.") # Adjusted default
@@ -742,7 +742,7 @@ if __name__ == "__main__":
     # System & Utility Arguments
     parser.add_argument('--num_workers', type=int, default=min(4, os.cpu_count() if os.cpu_count() else 1), help="Number of worker processes for DataLoader.")
     parser.add_argument('--no_gpu', action='store_true', help="Disable GPU usage even if CUDA is available.")
-    parser.add_argument('--resume_from', type=str, default = None, help="Path to a checkpoint file to resume training from.")
+    parser.add_argument('--resume_from', type=str, default = "ode_inverse_output_lstm/last_model.pth", help="Path to a checkpoint file to resume training from.")
 
     # Validation & Trajectory Comparison Arguments
     parser.add_argument('--num_traj_comps', type=int, default=0, help="Number of validation examples for trajectory comparison per epoch.")
