@@ -1,0 +1,18 @@
+# Streamlit for the web UI
+streamlit>=1.0
+
+# Numerical & data handling
+numpy>=1.21
+pandas>=1.3
+
+# ODE solver
+scipy>=1.7
+
+# Interactive plotting
+plotly>=5.0
+
+# Machine-learning framework
+torch>=1.10
+
+# Preprocessing utilities
+scikit-learn>=1.0
