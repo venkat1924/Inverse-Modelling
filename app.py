@@ -23,7 +23,7 @@ STATE_VARIABLES = ['X', 'Y', 'Z']
 NUM_STATE_VARIABLES = len(STATE_VARIABLES)
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-FIXED_MODEL_PATH = "ode_inverse_output_lstm2/best_model.pth" # As per your request
+FIXED_MODEL_PATH = "Weights/lstm_best_model.pth" # As per your request
 FIXED_LSTM_MODEL_PARAMS = {
     'hidden_size': 512,
     'num_layers': 4,
