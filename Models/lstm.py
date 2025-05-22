@@ -716,8 +716,8 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train inverse model for ODE parameter recovery lstm.")
     # Data & Output Arguments
-    parser.add_argument('--data_path', type=str, default='simulation_results.csv', help="Path to the simulation results CSV file.")
-    parser.add_argument('--output_dir', type=str, default="ode_inverse_output_lstm2", help="Directory to save checkpoints, plots, and results.")
+    parser.add_argument('--data_path', type=str, default='../Data/simulation_results.csv', help="Path to the simulation results CSV file.")
+    parser.add_argument('--output_dir', type=str, default="../ode_inverse_output_lstm2", help="Directory to save checkpoints, plots, and results.")
     parser.add_argument('--use_clean_data', action='store_true', help="Use 'X','Y','Z' columns instead of 'X_noisy','Y_noisy','Z_noisy'.")
 
     # Model Choice Arguments
